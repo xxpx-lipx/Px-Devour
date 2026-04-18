@@ -19,14 +19,7 @@ local function savePos(pos)
 end
 
 local function loadPos()
-    if readfile and isfile and isfile(fileName) then
-        local str = readfile(fileName)
-        local parts = string.split(str, ",")
-        if #parts == 4 then
-            return ud2(tonumber(parts[1]), tonumber(parts[2]), tonumber(parts[3]), tonumber(parts[4]))
-        end
-    end
-    return ud2(0.5, -115, 0.5, -87)
+    return ud2(1, -280, 0.5, -87)
 end
 
 local function mk(cls, prnt, props)
@@ -146,7 +139,7 @@ local function cDEVOUR()
     local tb = mk("Frame", f, {Size = ud2(1,0,0,40), BackgroundColor3 = c3(20,80,60), BorderSizePixel = 0})
     mk("UIGradient", tb, {Color = mG.Color, Rotation = 45})
     mk("UICorner", tb, {CornerRadius = ud(0,12)})
-    mk("TextLabel", tb, {Size = ud2(1,-40,1,0), Position = ud2(0,12,0,0), BackgroundTransparency = 1, Text = "Px Devour", TextColor3 = c3(255,255,255), Font = f_gb, TextSize = 14, TextXAlignment = "Left"})
+    mk("TextLabel", tb, {Size = ud2(1,-40,1,0), Position = ud2(0,12,0,0), BackgroundTransparency = 1, Text = "Px Devour", TextColor3 = c3(255,255,255), Font = f_gb, TextSize = 13, TextXAlignment = "Left"})
     local tB = mk("TextButton", tb, {Size = ud2(0,24,0,24), Position = ud2(1,-32,0,8), Text = "－", BackgroundColor3 = c3(30,60,45), TextColor3 = c3(255,255,255), Font = f_gb, TextSize = 14})
     mk("UICorner", tB, {CornerRadius = ud(0,6)})
 
@@ -154,10 +147,10 @@ local function cDEVOUR()
 
     local function cTg(name, yPos)
         local container = mk("Frame", iF, {Size = ud2(1,0,0,40), Position = ud2(0,0,0,yPos), BackgroundTransparency = 1})
-        local lab = mk("TextLabel", container, {Size = ud2(0, 130, 1, 0), Position = ud2(0, 15, 0, 0), BackgroundTransparency = 1, Text = name, TextColor3 = c3(255,255,255), Font = Enum.Font.GothamMedium, TextSize = 14, TextXAlignment = "Left"})
+        local lab = mk("TextLabel", container, {Size = ud2(0, 130, 1, 0), Position = ud2(0, 15, 0, 0), BackgroundTransparency = 1, Text = name, TextColor3 = c3(255,255,255), Font = Enum.Font.GothamBold, TextSize = 15, TextXAlignment = "Left"})
         
         if name == "Devour" then
-            local keyLabel = mk("TextLabel", container, {Size = ud2(0, 20, 1, 0), BackgroundTransparency = 1, Text = "(G)", TextColor3 = c3(180,180,180), Font = Enum.Font.GothamMedium, TextSize = 14, TextXAlignment = "Left"})
+            local keyLabel = mk("TextLabel", container, {Size = ud2(0, 20, 1, 0), BackgroundTransparency = 1, Text = "(G)", TextColor3 = c3(180,180,180), Font = Enum.Font.GothamBold, TextSize = 15, TextXAlignment = "Left"})
             run.RenderStepped:Connect(function()
                 keyLabel.Position = ud2(0, lab.Position.X.Offset + lab.TextBounds.X + 5, 0, 0)
             end)
